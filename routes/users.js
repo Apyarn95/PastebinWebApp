@@ -113,7 +113,7 @@ router.post('/paste',(req,res)=>{
     }
     if(errors.length > 0){
         console.log(errors[0])
-        res.render('dashboard');  
+        // res.render('dashboard');  
     }else{
         //Validation passed
         Paste.findOne({name : name ,fname : fname})
@@ -121,7 +121,7 @@ router.post('/paste',(req,res)=>{
             if(user){
                //User exists
                errors.push({msg:'File already exists'});
-               res.render('dashboard');   
+            //    res.render('dashboard');   
             }else{
                const newPaste = new Paste({
                    name,
@@ -143,7 +143,7 @@ router.post('/paste',(req,res)=>{
                     newPaste.save()
                         .then(user=>{
                             req.flash('success_msg','You are now registered and can login')
-                            res.render('dashboard');
+                            // res.render('dashboard');
                         })
                         .catch(err=>console.log(err));
                }))
